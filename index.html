@@ -9,6 +9,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="POCUS USG">
 <title>POCUS USG</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;600;700&family=Nunito:wght@400;700&family=Hind+Siliguri:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Baloo+Da+2:wght@400;600;700&family=Anek+Bangla:wght@400;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
@@ -3549,7 +3552,7 @@ function boot(){
     isAdmin=POCUS.isAdminEmail(user.email);
     if(isAdmin){startCloud(user);return;}
     /* colleagues: need admin approval */
-    let me;try{me=await POCUS.ensureUserDoc(user);}catch(e){showLoginBox();showLogin('সংযোগে সমস্যা — আবার চেষ্টা করুন');return;}
+    try{await POCUS.ensureUserDoc(user);}catch(e){/* offline: fall back to the cached approval below */}
     POCUS.watchMyUser(user.uid,d=>{
       const st=d&&d.status||'pending';
       if(st==='approved')startCloud(user);
@@ -3573,6 +3576,10 @@ window.addEventListener('pocus-ready',boot);
 if(window.POCUS)boot();
 setTimeout(()=>{if(!started)boot();},6000);
 applyPrefs();renderChips();
+/* offline support + home-screen install */
+if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(e=>console.warn('SW',e)));
+}
 </script>
 </body>
 </html>
