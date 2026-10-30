@@ -151,7 +151,15 @@ mark{background:color-mix(in srgb,var(--accent2) 35%,transparent);color:inherit;
 /* ---------- SHEET ---------- */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:60;display:none;align-items:flex-end;justify-content:center}
 .overlay.open{display:flex}
-.sheet{background:var(--bg2);width:100%;max-width:720px;height:94vh;max-height:94vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-radius:22px 22px 0 0;border:1px solid var(--border);border-bottom:0;padding:16px 18px calc(40px + env(safe-area-inset-bottom))}
+.sheet{background:var(--bg2);width:100%;max-width:720px;height:94vh;max-height:94vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-radius:22px 22px 0 0;border:1px solid var(--border);border-bottom:0;padding:0 18px calc(40px + env(safe-area-inset-bottom))}
+.sheettop{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 -18px 12px;padding:12px 14px 10px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.backbtn{flex:0 0 auto;border:0;background:var(--accent);color:var(--onacc);font-weight:700;border-radius:12px;padding:9px 14px;font-size:.9rem;cursor:pointer}
+.backbtn:active{transform:scale(.95)}
+.sttitle{flex:1;min-width:0;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vwrap{position:relative;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden}
+.vwrap iframe,.vwrap video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.gvid{margin:8px 0}
+.gvrm{margin-top:6px;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:10px;padding:6px 11px;font-size:.78rem;cursor:pointer}
 .grab{width:42px;height:5px;border-radius:3px;background:var(--border);margin:0 auto 12px}
 .sheet h2{margin:0 0 4px;font-size:1.15rem}
 .sheet .sub{color:var(--muted);font-size:.85rem;margin-bottom:14px}
@@ -229,7 +237,7 @@ mark{background:color-mix(in srgb,var(--accent2) 35%,transparent);color:inherit;
 .catrow span{flex:1}
 
 /* ---------- EDITOR ---------- */
-.rtbar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;position:sticky;top:-16px;background:var(--bg2);padding:4px 0;z-index:2}
+.rtbar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;position:sticky;top:58px;background:var(--bg2);padding:4px 0;z-index:2}
 .rtbar button{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:9px;min-width:36px;height:34px;font-size:.85rem;cursor:pointer;padding:0 8px}
 .editor{min-height:160px;max-height:50vh;overflow:auto;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);padding:12px;line-height:1.6}
 .editor:focus{outline:2px solid var(--accent)}
@@ -2812,7 +2820,7 @@ bn:{tagline:'Lung • Echo — ICU bedside guide',search:'খুঁজুন: ta
  cleanImg:'অব্যবহৃত ছবি মুছুন',progress:'পড়ার অগ্রগতি মুছুন',account:'Account',logout:'লগআউট',
  offline:'অফলাইন মোড — Firebase config বসানো হয়নি; সব ডেটা এই ডিভাইসে।',kicked:'অন্য ডিভাইসে লগইন হয়েছে — লগআউট হচ্ছে',
  saved_:'✓ সংরক্ষিত',deleted:'🗑 মুছে ফেলা হলো',undone:'↶ Undo',redone:'↷ Redo',saveFail:'Cloud-এ সেভ হয়নি',
- imgWorking:'ছবি তৈরি হচ্ছে…',imgDone:'✓ ছবি যোগ হয়েছে',imgFail:'ছবি যোগ করা গেল না',linkAsk:'ছবির লিংক দিন (Google Drive share link বা যেকোনো image URL)',
+ imgWorking:'ছবি তৈরি হচ্ছে…',imgDone:'✓ ছবি যোগ হয়েছে',imgFail:'ছবি যোগ করা গেল না',linkAsk:'ছবির লিংক দিন (Google Drive share link বা যেকোনো image URL)',vidAsk:'ভিডিওর লিংক দিন (Google Drive বা YouTube)। Drive-এ ফাইলটি "Anyone with the link" করে রাখুন।',addVid:'🎬 ভিডিও',vidDone:'✓ ভিডিও যোগ হয়েছে',backHome:'ফিরে যান',
  slotAsk:'ছবির জায়গার নাম (যেমন: PLAX — স্বাভাবিক ছবি)',seeding:'প্রথমবার: কনটেন্ট cloud-এ তোলা হচ্ছে…',seeded:'✓ Cloud-এ তোলা শেষ',
  tools:'Diagnosis tools',toolsSub:'যা দেখছেন ধাপে ধাপে বেছে দিন',back:'◀ পেছনে',again:'↻ আবার শুরু',readMore:'📖 বিস্তারিত কার্ড',likely:'সম্ভাব্য',action:'করণীয়',
  casesT:'Case practice',casesSub:'নিজে ভাবুন, তারপর উত্তর দেখুন',random:'এলোমেলো',caseDoneQ:'✓ এটা পেরেছি',caseDoneY:'✓ পেরেছি — চিহ্ন তুলে দিন',show:'👁 উত্তর দেখুন',answer:'ব্যাখ্যা',of:'/',prevC:'◀ আগের',nextC:'পরের ▶',
@@ -2838,7 +2846,7 @@ en:{tagline:'Lung • Echo — ICU bedside guide',search:'Search: tamponade, TAP
  cleanImg:'Delete unused images',progress:'Clear reading progress',account:'Account',logout:'Log out',
  offline:'Offline mode — Firebase not configured; data stays on this device.',kicked:'Logged in on another device — logging out',
  saved_:'✓ Saved',deleted:'🗑 Deleted',undone:'↶ Undone',redone:'↷ Redone',saveFail:'Cloud save failed',
- imgWorking:'Preparing image…',imgDone:'✓ Image added',imgFail:'Could not add image',linkAsk:'Image link (Google Drive share link or any image URL)',
+ imgWorking:'Preparing image…',imgDone:'✓ Image added',imgFail:'Could not add image',linkAsk:'Image link (Google Drive share link or any image URL)',vidAsk:'Video link (Google Drive or YouTube). Set the Drive file to "Anyone with the link".',addVid:'🎬 Video',vidDone:'✓ Video added',backHome:'Back',
  slotAsk:'Name of this image place (e.g. PLAX — normal)',seeding:'First run: uploading content to cloud…',seeded:'✓ Uploaded to cloud',
  tools:'Diagnosis tools',toolsSub:'Pick what you see, step by step',back:'◀ Back',again:'↻ Start again',readMore:'📖 Read the card',likely:'Likely',action:'What to do',
  casesT:'Case practice',casesSub:'Think first, then reveal',random:'Random',caseDoneQ:'✓ I got this',caseDoneY:'✓ Got it — tap to unmark',show:'👁 Show answer',answer:'Explanation',of:'/',prevC:'◀ Prev',nextC:'Next ▶',
@@ -2978,6 +2986,20 @@ function addLinkTo(cardId,slotId){
   const u=prompt(T('linkAsk'));if(!u||!/^https?:\/\//i.test(u.trim()))return;
   commit(()=>{const c=byId(cardId);if(slotId)c.slots={...c.slots,[slotId]:u.trim()};else c.gallery=[...c.gallery,u.trim()];});
   refreshOpenCard();
+}
+const isVid=r=>typeof r==='string'&&r.startsWith('vid:');
+function driveId(u){const m=String(u).match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);return m?m[1]:null;}
+function videoHTML(ref){
+  const u=ref.slice(4);const d=driveId(u);
+  const yt=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{6,})/);
+  const src=d?'https://drive.google.com/file/d/'+d+'/preview':yt?'https://www.youtube.com/embed/'+yt[1]:null;
+  return src?`<div class="vwrap"><iframe src="${esc(src)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`
+            :`<div class="vwrap"><video src="${esc(u)}" controls playsinline preload="metadata"></video></div>`;
+}
+function addVideoTo(cardId,slotId){
+  const u=(prompt(T('vidAsk'))||'').trim();if(!/^https?:\/\//i.test(u))return;
+  commit(()=>{const c=byId(cardId);const ref='vid:'+u;if(slotId)c.slots={...c.slots,[slotId]:ref};else c.gallery=[...c.gallery,ref];});
+  refreshOpenCard();toast(T('vidDone'));
 }
 function viewImage(src,cap){$('#lbImg').src=src;$('#lbCap').textContent=cap||'';$('#lightbox').classList.add('open');}
 
@@ -3140,15 +3162,28 @@ function renderAll(){applyPrefs();renderTabs();renderRound();renderCats();render
 
 /* ---------- sheet ---------- */
 let openCardId=null,sheetMode=null;
-function openSheet(html,mode){const s=$('#sheet');s.innerHTML='<div class="grab"></div>'+html;s.scrollTop=0;sheetMode=mode||'x';$('#overlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeSheet(){$('#overlay').classList.remove('open');openCardId=null;sheetMode=null;document.body.style.overflow='';}
+let sheetHist=false,ignorePop=false;
+const topBar=t=>`<div class="sheettop"><button class="backbtn" data-act="close">◀ ${T('backHome')}</button><span class="sttitle">${esc(t||'')}</span></div>`;
+function openSheet(html,mode,title){
+  const s=$('#sheet');s.innerHTML=topBar(title)+html;s.scrollTop=0;sheetMode=mode||'x';
+  if(!$('#overlay').classList.contains('open')){try{history.pushState({pocusSheet:1},'');sheetHist=true;}catch(e){}}
+  $('#overlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function hideSheet(){$('#overlay').classList.remove('open');openCardId=null;sheetMode=null;document.body.style.overflow='';}
+function closeSheet(){hideSheet();if(sheetHist){sheetHist=false;ignorePop=true;try{history.back();}catch(e){ignorePop=false;}}}
+/* phone back button / swipe closes the open sheet instead of leaving the app */
+window.addEventListener('popstate',()=>{if(ignorePop){ignorePop=false;return;}
+  if($('#lightbox').classList.contains('open')){$('#lightbox').classList.remove('open');}
+  if($('#overlay').classList.contains('open')){sheetHist=false;hideSheet();}});
 
 /* ---------- content view ---------- */
 function bodyOf(c){return (prefs.lang==='en'?(c.bodyEn||c.bodyBn):(c.bodyBn||c.bodyEn))||'';}
 function fillSlot(el,c){
   const id=el.dataset.slot,cap=el.dataset.cap||'',ref=(c.slots||{})[id];
   el.innerHTML='';el.classList.remove('filled','loadingimg');
-  if(ref){
+  if(isVid(ref)){
+    el.classList.add('filled');el.insertAdjacentHTML('beforeend',videoHTML(ref));
+  }else if(ref){
     el.classList.add('filled');const img=document.createElement('img');img.alt=cap;img.loading='lazy';
     const s=imgSrc(ref);if(s)img.src=s;else{el.classList.add('loadingimg');ensureImg(ref).then(()=>{const s2=imgSrc(ref);if(s2){img.src=s2;el.classList.remove('loadingimg');}});}
     img.addEventListener('click',()=>viewImage(img.src,cap));el.appendChild(img);
@@ -3157,14 +3192,16 @@ function fillSlot(el,c){
   }
   if(cap)el.insertAdjacentHTML('beforeend',`<div class="slotcap">${esc(cap)}</div>`);
   if(canEdit()){
-    el.insertAdjacentHTML('beforeend',`<div class="slotacts"><button data-act="slotimg" data-id="${esc(c.id)}" data-slot="${esc(id)}">${ref?T('replace'):T('addImg')}</button><button data-act="slotlink" data-id="${esc(c.id)}" data-slot="${esc(id)}">${T('addLink')}</button>${ref?`<button data-act="slotrm" data-id="${esc(c.id)}" data-slot="${esc(id)}">${T('remove')}</button>`:''}</div>`);
+    el.insertAdjacentHTML('beforeend',`<div class="slotacts"><button data-act="slotimg" data-id="${esc(c.id)}" data-slot="${esc(id)}">${ref?T('replace'):T('addImg')}</button><button data-act="slotlink" data-id="${esc(c.id)}" data-slot="${esc(id)}">${T('addLink')}</button><button data-act="slotvid" data-id="${esc(c.id)}" data-slot="${esc(id)}">${T('addVid')}</button>${ref?`<button data-act="slotrm" data-id="${esc(c.id)}" data-slot="${esc(id)}">${T('remove')}</button>`:''}</div>`);
   }
 }
 function galleryHTML(c){
   if(!c.gallery.length&&!canEdit())return '';
-  let h=`<h3 style="margin-top:22px">${T('gallery')}</h3><div class="gallery">`;
-  c.gallery.forEach((ref,i)=>{h+=`<div class="gi"><img data-gref="${esc(ref)}" alt="">${canEdit()?`<button data-act="galrm" data-id="${esc(c.id)}" data-i="${i}">✕</button>`:''}</div>`;});
-  if(canEdit())h+=`<button class="gadd" data-act="galadd" data-id="${esc(c.id)}">${T('addImg')}</button><button class="gadd" data-act="gallink" data-id="${esc(c.id)}">${T('addLink')}</button>`;
+  let h=`<h3 style="margin-top:22px">${T('gallery')}</h3>`;
+  c.gallery.forEach((ref,i)=>{if(isVid(ref))h+=`<div class="gvid">${videoHTML(ref)}${canEdit()?`<button class="gvrm" data-act="galrm" data-id="${esc(c.id)}" data-i="${i}">✕ ${T('remove').replace('✕ ','')}</button>`:''}</div>`;});
+  h+=`<div class="gallery">`;
+  c.gallery.forEach((ref,i)=>{if(!isVid(ref))h+=`<div class="gi"><img data-gref="${esc(ref)}" alt="">${canEdit()?`<button data-act="galrm" data-id="${esc(c.id)}" data-i="${i}">✕</button>`:''}</div>`;});
+  if(canEdit())h+=`<button class="gadd" data-act="galadd" data-id="${esc(c.id)}">${T('addImg')}</button><button class="gadd" data-act="gallink" data-id="${esc(c.id)}">${T('addLink')}</button><button class="gadd" data-act="galvid" data-id="${esc(c.id)}">${T('addVid')}</button>`;
   return h+'</div>';
 }
 function openCard(id,opt){
@@ -3182,8 +3219,8 @@ function openCard(id,opt){
   <div class="navrow"><button data-act="open" data-id="${prev?esc(prev.id):''}" ${prev?'':'disabled'}>${T('prev')}</button><button class="nx" data-act="open" data-id="${next?esc(next.id):''}" ${next?'':'disabled'}>${T('next')}</button></div>
   ${canEdit()?`<div class="actions"><button class="btn-del" data-act="del" data-id="${esc(id)}">${T('del')}</button><button class="btn-save" data-act="edit" data-id="${esc(id)}">${T('edit')}</button></div>`:''}
   <div class="actions"><button class="btn-cancel" data-act="close">${T('close')}</button></div>`;
-  if(sheetMode==='card'&&$('#overlay').classList.contains('open')){const s=$('#sheet');s.innerHTML='<div class="grab"></div>'+html;if(!opt.keepScroll)s.scrollTop=0;}
-  else openSheet(html,'card');
+  if(sheetMode==='card'&&$('#overlay').classList.contains('open')){const s=$('#sheet');s.innerHTML=topBar(title)+html;if(!opt.keepScroll)s.scrollTop=0;}
+  else openSheet(html,'card',title);
   const body=$('#cbody');body.innerHTML=bodyOf(c);
   body.querySelectorAll('.imgslot').forEach(el=>fillSlot(el,c));
   document.querySelectorAll('#cgal img[data-gref]').forEach(img=>{const ref=img.dataset.gref;const s=imgSrc(ref);
@@ -3447,6 +3484,8 @@ const ACT={
   slotrm:el=>{commit(()=>{const c=byId(el.dataset.id);const s={...c.slots};delete s[el.dataset.slot];c.slots=s;});refreshOpenCard();},
   galadd:el=>addImageTo(el.dataset.id,null),
   gallink:el=>addLinkTo(el.dataset.id,null),
+  slotvid:el=>addVideoTo(el.dataset.id,el.dataset.slot),
+  galvid:el=>addVideoTo(el.dataset.id,null),
   galrm:el=>{commit(()=>{const c=byId(el.dataset.id);c.gallery=c.gallery.filter((_,i)=>i!==+el.dataset.i);});refreshOpenCard();},
   undo:()=>undo(),redo:()=>redo(),
   tools:()=>openTools(),cases:()=>openCases('all'),
